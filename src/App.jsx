@@ -47,12 +47,14 @@ function App() {
 
 const AboutContainer = styled.div`
   grid-row: 3/3;
+  grid-column: 1/-1;
   display: flex;
   flex-direction: column;
 `;
 
 const PortfolioContainer = styled.div`
   grid-row: 2/3;
+  grid-column: 2/2;
   display: flex;
   flex-direction: row;
   flex: 0;
@@ -60,7 +62,9 @@ const PortfolioContainer = styled.div`
 
 const MainContainer = styled.div`
   display: grid;
+  justify-content: center;
   grid-template-rows: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   height: 100vh;
 `;
 
@@ -69,6 +73,7 @@ const HeaderContainer = styled.div`
     margin: 0.1rem;
   }
   grid-row: 1/2;
+  grid-column: 1/-1;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -19,12 +19,12 @@ const ImageSlider = ({ images, descriptions }) => {
     <SliderContainer>
       <Arrow onClick={goToPreviousSlide}>&lt;</Arrow>
       <ImageContainer>
-        <Img src={images[getPrevIndex(currentIndex)]} alt="portfolio-image" />
+        <Img src={images[getPrevIndex(currentIndex)]} alt="portfolio-image" onClick={goToPreviousSlide} />
         <FocusedImageContainer>
           <Img src={images[currentIndex]} alt="portfolio-image" />
           <ImageDescription>{descriptions[currentIndex]}</ImageDescription>
         </FocusedImageContainer>
-        <Img src={images[getNextIndex(currentIndex)]} alt="portfolio-image" />
+        <Img src={images[getNextIndex(currentIndex)]} alt="portfolio-image" onClick={goToNextSlide} />
       </ImageContainer>
       <Arrow onClick={goToNextSlide}>&gt;</Arrow>
     </SliderContainer>
@@ -54,7 +54,8 @@ const ImageContainer = styled.div`
 
 const FocusedImageContainer = styled.div`
   position: relative;
-  margin: 0 1rem;
+  transform: scale(1.2);
+  margin: 0 3.5rem;
 `;
 
 const ImageDescription = styled.p`

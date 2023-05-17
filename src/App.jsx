@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { RxCross2, RxDash, RxSquare } from 'react-icons/rx'
+import Background from './assets/windowsBG.jpg';
 
 function App() {
 
@@ -9,8 +10,8 @@ function App() {
       <HeaderContainer>
         <div className="category">
           <h2>Home <RxCross2 className="cross" /></h2>
-          <h2>Projects</h2>
-          <h2>Resume</h2>
+          <h2>Projects <RxCross2 className="cross" /></h2>
+          <h2>Resume <RxCross2 className="cross" /></h2>
         </div>
         <div className="options">
           <div><RxDash /></div>
@@ -28,32 +29,43 @@ function App() {
         <p className="menu-item">[ Item 4 ]</p>
         <p>PS C:\Developer\Portfolio\Christopher{'>'} <input placeholder="Search bar.."></input></p>
       </TerminalContainer>
-      <PortfolioContainer>
-        <h1>Christopher Vasankari</h1>
-        <h2>Aspiring .NET Developer</h2>
-        <p>
-          Enthusiastic 29-year-old C# developer-in-training, passionate about software development. Pursuing a software development career,
-          with experience in diverse projects demonstrating adaptability and quick learning. Committed to staying current with industry
-          trends and embracing new technologies. Eager to contribute to dynamic teams and deliver high-quality software products in a
-          challenging, rewarding software development role.
-        </p>
-      </PortfolioContainer>
       <ContactContainer>
-        <h1>Christopher Vasankari</h1>
-        <h2>Aspiring .NET Developer</h2>
-        <p>
-          Enthusiastic 29-year-old C# developer-in-training, passionate about software development. Pursuing a software development career,
-          with experience in diverse projects demonstrating adaptability and quick learning. Committed to staying current with industry
-          trends and embracing new technologies. Eager to contribute to dynamic teams and deliver high-quality software products in a
-          challenging, rewarding software development role.
-        </p>
       </ContactContainer>
       <AboutContainer>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, sapiente.</p>
+        <WindowsButton>Start</WindowsButton>
+        <div>Logo</div>
       </AboutContainer>
     </MainContainer>
   );
 }
+
+// Button design from Codepen - https://codepen.io/brundolf/pen/wzMWdy 
+const WindowsButton = styled.button`
+  width: 10rem;
+  height: 100%;
+  position:relative;
+  display:inline-block;
+  font-size:1.7rem;
+  color:white;
+  font-style:italic;
+  padding: 5px 25px 5px 15px;
+  text-shadow:1px 1px 1px #333;
+  border-radius:0px 10px 15px 0px;
+  border:none;
+  transform:skewX(-3deg);
+  left:-5px;
+  box-shadow: 0px 5px 10px #79ce71 inset;
+  background: radial-gradient(circle, #5eac56 0%, #3c873c 100%) center/cover no-repeat;
+  &::before{
+          position:relative;
+          display:inline-block;
+          height:15px;
+          width:15px;
+          top:1px;
+          transform:skewX(3deg);
+          -webkit-filter:drop-shadow(1px 1px 1px #333);
+  }
+`
 
 const HeaderContainer = styled.div`
   grid-row: 1/2;
@@ -64,6 +76,11 @@ const HeaderContainer = styled.div`
   align-items: end;
   width: 100%;
   background-color: #262626;
+
+  /* &:active {
+    // Swap with color above once I figure out how to activate this
+    background-color: #333333;
+  } */
 
   .options {
     display: flex;
@@ -124,6 +141,7 @@ const HeaderContainer = styled.div`
       padding-right: 0.5rem;
       padding-top: 0.3rem;
       padding-bottom: 0.3rem;
+      opacity: 1; // fix later
       &:hover {
         background-color: #1a1a1a;
       }
@@ -137,20 +155,16 @@ const AboutContainer = styled.div`
   grid-column: 1/-1;
   display: flex;
   flex-direction: column;
-`;
-
-const PortfolioContainer = styled.div`
-  grid-row: 3/4;
-  grid-column: 1/2;
-  display: flex;
-  flex-direction: row;
-  flex: 0;
-  height: 100%;
+  width: 100%;
+  background:linear-gradient(to bottom, 
+    #245edb 0%, #3f8cf3 9%, 
+    #245edb 18%, #245edb 92%, 
+  #333 100%) center/cover no-repeat;
 `;
 
 const ContactContainer = styled.div`
   grid-row: 3/4;
-  grid-column: 2/-1;
+  grid-column: 1/-1;
   display: flex;
   flex-direction: row;
   flex: 0;
@@ -160,17 +174,17 @@ const ContactContainer = styled.div`
 const MainContainer = styled.div`
   display: grid;
   justify-content: center;
-  grid-template-rows: 3rem 45rem 1fr 5rem;
+  grid-template-rows: 3rem 45rem 1fr 3rem;
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-
-  @media (max-width: 768px) {
-    grid-template-rows: auto;
-    grid-template-columns: 1fr;
-  }
+  width: 100vw;
+  background-image: url(background);
 `;
 
 const TerminalContainer = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
+  rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+  rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   * {
     margin: 0.1rem;
     font-family: cascadia mono;

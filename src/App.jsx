@@ -26,7 +26,7 @@ function App() {
         <p className="menu-item">[ Item 2 ]</p>
         <p className="menu-item">[ Item 3 ]</p>
         <p className="menu-item">[ Item 4 ]</p>
-        <p>PS C:\Developer\Portfolio\Christopher{'>'} </p>
+        <p>PS C:\Developer\Portfolio\Christopher{'>'} <input placeholder="Search bar.."></input></p>
       </TerminalContainer>
       <PortfolioContainer>
         <h1>Christopher Vasankari</h1>
@@ -190,6 +190,19 @@ const TerminalContainer = styled.div`
       text-decoration: none;
       color: darkorange;
     }
+  }
+  input {
+    font-size: 1rem;
+    color: #cccccc;
+    border: none;
+    background-color: transparent;
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+    /* &::placeholder {
+      opacity: 1;
+    } */
   }
   grid-row: 2/3;
   grid-column: 1/-1;

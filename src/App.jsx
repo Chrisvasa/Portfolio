@@ -4,22 +4,23 @@ import { RxCross2, RxDash, RxSquare } from 'react-icons/rx'
 import Background from './assets/windowsBG.jpg';
 
 function App() {
+  const [showConsole, setShowConsole] = useState(true);
 
   return (
     <MainContainer>
-      <HeaderContainer>
+      {showConsole ? <HeaderContainer>
         <div className="category">
           <h2>Home <RxCross2 className="cross" /></h2>
           <h2>Projects <RxCross2 className="cross" /></h2>
           <h2>Resume <RxCross2 className="cross" /></h2>
         </div>
         <div className="options">
-          <div><RxDash /></div>
+          <div onClick={() => setShowConsole(prevState => !prevState)} ><RxDash /></div>
           <div><RxSquare /></div>
           <div className="exit"><RxCross2 /></div>
         </div>
-      </HeaderContainer>
-      <TerminalContainer>
+      </HeaderContainer> : null}
+      {showConsole ? <TerminalContainer>
         <p>Backend Developer's Terminal</p>
         <p>Copyright (C) Christopher Vasankari. All rights reserved.</p>
         <p>Visit my github to get more information on any of my projects! <a href="https://github.com/Chrisvasa" target="_blank">https://github.com/Chrisvasa</a></p>
@@ -28,13 +29,13 @@ function App() {
         <p className="menu-item">[ Item 3 ]</p>
         <p className="menu-item">[ Item 4 ]</p>
         <p>PS C:\Developer\Portfolio\Christopher{'>'} <input placeholder="Search bar.."></input></p>
-      </TerminalContainer>
+      </TerminalContainer> : null}
       <ContactContainer>
       </ContactContainer>
-      <AboutContainer>
+      <Taskbar>
         <WindowsButton>Start</WindowsButton>
-        <div>Logo</div>
-      </AboutContainer>
+        <div className="task-icons" onClick={() => setShowConsole(prevState => !prevState)}>Terminal</div>
+      </Taskbar>
     </MainContainer>
   );
 }
@@ -57,13 +58,13 @@ const WindowsButton = styled.button`
   box-shadow: 0px 5px 10px #79ce71 inset;
   background: radial-gradient(circle, #5eac56 0%, #3c873c 100%) center/cover no-repeat;
   &::before{
-          position:relative;
-          display:inline-block;
-          height:15px;
-          width:15px;
-          top:1px;
-          transform:skewX(3deg);
-          -webkit-filter:drop-shadow(1px 1px 1px #333);
+    position:relative;
+    display:inline-block;
+    height:15px;
+    width:15px;
+    top:1px;
+    transform:skewX(3deg);
+    -webkit-filter:drop-shadow(1px 1px 1px #333);
   }
 `
 
@@ -111,7 +112,7 @@ const HeaderContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    padding-right: 2rem;
+    padding-left: 0.64rem;
     height: 2.5rem;
     > h2 {
       font-size: 1.2rem;
@@ -150,16 +151,25 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const AboutContainer = styled.div`
+const Taskbar = styled.div`
   grid-row: 4/-1;
   grid-column: 1/-1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   background:linear-gradient(to bottom, 
     #245edb 0%, #3f8cf3 9%, 
     #245edb 18%, #245edb 92%, 
   #333 100%) center/cover no-repeat;
+
+  .task-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+      background-color: black;
+      width: 8rem;
+    }
 `;
 
 const ContactContainer = styled.div`
@@ -206,6 +216,7 @@ const TerminalContainer = styled.div`
     }
   }
   input {
+    width: 68.5vw;
     font-size: 1rem;
     color: #cccccc;
     border: none;
